@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lojinha_alura/telas/carrinho.dart';
 import 'package:lojinha_alura/telas/detalhes.dart';
 import 'package:lojinha_alura/widgets/appbar_customizada.dart';
+import 'package:lojinha_alura/widgets/grid_produtos.dart';
 
 void main() {
   runApp(MyApp());
@@ -83,13 +84,7 @@ class Inicio extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBarCustomizada(titulo: 'Lojinha', ehPaginaCarrinho: false),
-      body: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Detalhes()));
-        },
-        child: Text('Vamos para os detalhes'),
-      ),
+      body: GridProdutos(moveis: moveis)
     );
   }
 }
