@@ -6,7 +6,7 @@ class Detalhes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarCustomizada(titulo: 'Detalhes'),
+      appBar: AppBarCustomizada(titulo: 'Detalhes', ehPaginaCarrinho: false),
       body: ElevatedButton(
         onPressed: () {
           Navigator.pushNamed(context, '/carrinho');
