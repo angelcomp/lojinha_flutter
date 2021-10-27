@@ -16,6 +16,12 @@ class CardDetalhes extends StatelessWidget {
         children: [
           TextoDetalhes(texto: movel.titulo),
           TextoDetalhes(texto: movel.descricao),
+          Row(
+            children: [
+              Text('R\$ ${movel.preco}'),
+              ElevatedButton(onPressed: () {}, child: Text('Comprar'))
+            ],
+          )
         ],
       ),
     );

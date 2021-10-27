@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lojinha_alura/paleta_cores.dart';
 import 'package:lojinha_alura/telas/carrinho.dart';
 import 'package:lojinha_alura/telas/detalhes.dart';
 import 'package:lojinha_alura/widgets/appbar_customizada.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: PaletaCores().lilas,
       ),
       home: Inicio(),
     );
