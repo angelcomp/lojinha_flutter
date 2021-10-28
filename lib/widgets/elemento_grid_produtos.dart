@@ -8,8 +8,9 @@ import 'package:lojinha_alura/widgets/titulo_elemento_grid_produtos.dart';
 
 class ElementoGridProdutos extends StatelessWidget {
   late final Movel movel;
+  final Function atualiza;
 
-  ElementoGridProdutos({required this.movel});
+  ElementoGridProdutos({required this.movel, required this.atualiza});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class ElementoGridProdutos extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => Detalhes(movel: movel),
           ),
-        );
+        ).then((value) => atualiza());
       },
       child: Container(
         decoration: BoxDecoration(boxShadow: [

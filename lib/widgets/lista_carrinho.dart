@@ -105,11 +105,11 @@ class _ListaCarrinhoState extends State<ListaCarrinho> {
     if (item.quantidade > 1) {
       setState(() {
         item.quantidade--;
-        widget.atualiza();
       });
     } else {
       _removerItem(item);
     }
+    widget.atualiza();
   }
 
   void _removerItem(ItemCarrinho item) {

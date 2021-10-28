@@ -5,7 +5,6 @@ import 'package:lojinha_alura/widgets/appbar_customizada.dart';
 import 'package:lojinha_alura/widgets/lista_carrinho.dart';
 
 class Carrinho extends StatefulWidget {
-
   @override
   _CarrinhoState createState() => _CarrinhoState();
 }
@@ -22,16 +21,20 @@ class _CarrinhoState extends State<Carrinho> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Total', style: Theme.of(context).textTheme.headline4,),
-            Text('R\$ $valorTotal', style: Theme.of(context).textTheme.headline5,)
+            Text(
+              'Total',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            Text(
+              'R\$ $valorTotal',
+              style: Theme.of(context).textTheme.headline5,
+            )
           ],
         ),
       ),
       backgroundColor: Colors.grey[200],
       appBar: AppBarCustomizada(titulo: 'Carrinho', ehPaginaCarrinho: true),
-      body: ListaCarrinho(
-          atualiza: atualiza
-      ),
+      body: _construirTela()
     );
   }
 
@@ -46,5 +49,17 @@ class _CarrinhoState extends State<Carrinho> {
           .reduce((precoAtual, precoNovo) => precoAtual + precoNovo);
     }
     return 0;
+  }
+
+  Widget _construirTela() {
+    if(Inicio.itensCarrinho.isNotEmpty) {
+      return ListaCarrinho(atualiza: atualiza);
+    } else {
+      return Container(
+        height: double.infinity,
+        alignment: Alignment.center,
+        child: Text('Nenhum item no carrinho'),
+      );
+    }
   }
 }

@@ -55,9 +55,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Inicio extends StatelessWidget {
+class Inicio extends StatefulWidget {
 
   static List<ItemCarrinho> itensCarrinho = [];
+
+  @override
+  _InicioState createState() => _InicioState();
+
+}
+
+class _InicioState extends State<Inicio> {
 
   final List moveis = [
     {
@@ -137,9 +144,13 @@ class Inicio extends StatelessWidget {
               ),
             ],
           ),
-          Flexible(child: GridProdutos(moveis: moveis))
+          Flexible(child: GridProdutos(atualiza: atualiza, moveis: moveis))
         ],
       ),
     );
+  }
+
+  void atualiza() {
+    setState(() {});
   }
 }
