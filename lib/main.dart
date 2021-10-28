@@ -38,6 +38,16 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Alata',
               fontWeight: FontWeight.bold,
               color: Colors.black),
+
+          headline4: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black),
+
+          headline5: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w300,
+              color: Colors.black),
         ),
       ),
       home: Inicio(),
