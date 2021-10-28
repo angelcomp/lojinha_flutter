@@ -1,7 +1,7 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lojinha_alura/main.dart';
+import 'package:lojinha_alura/widgets/indicador_botao_carrinho.dart';
 
 class BotaoCarrinho extends StatelessWidget {
   @override
@@ -10,24 +10,35 @@ class BotaoCarrinho extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(context, '/carrinho');
       },
-        child: Container(
-          child: const Image(
-              height: 30,
-              image: AssetImage('utilidades/assets/icones/carrinho.png')),
-          decoration: const BoxDecoration(
+      child: Container(
+        child: _visibilidadeIndicadorCarrinho(),
+        decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(100),
-              bottomLeft: Radius.circular(100)
-            ),
-            color: Colors.white
+                topLeft: Radius.circular(100),
+                bottomLeft: Radius.circular(100)),
+            color: Colors.white),
+        alignment: Alignment.centerRight,
+        height: 40,
+        padding: const EdgeInsets.only(right: 20, left: 20),
+      ),
+    );
+  }
+
+  _visibilidadeIndicadorCarrinho() {
+    if (Inicio.itensCarrinho.isNotEmpty) {
+      return Stack(
+        children: [
+          const Image(
+            height: 30,
+            image: AssetImage('utilidades/assets/icones/carrinho.png'),
           ),
-          alignment: Alignment.centerRight,
-          height: 40,
-          padding: const EdgeInsets.only(
-            right: 20,
-            left: 20
-          ),
-        ),
+          IndicadorBotaoCarrinho()
+        ],
+      );
+    }
+    return const Image(
+      height: 30,
+      image: AssetImage('utilidades/assets/icones/carrinho.png'),
     );
   }
 }

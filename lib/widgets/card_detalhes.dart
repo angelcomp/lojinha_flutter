@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lojinha_alura/main.dart';
+import 'package:lojinha_alura/models/item_carrinho.dart';
 import 'package:lojinha_alura/models/movel.dart';
 import 'package:lojinha_alura/widgets/texto_detalhes.dart';
 
@@ -25,7 +27,11 @@ class CardDetalhes extends StatelessWidget {
               children: [
                 Text('R\$ ${movel.preco}', style: Theme.of(context).textTheme.headline1,),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _adicionarItemCarrinho(
+                      ItemCarrinho(movel: movel, quantidade: 1)
+                    );
+                  },
                   child: const Text(
                     'Comprar',
                     style: TextStyle(color: Colors.white),
@@ -37,5 +43,9 @@ class CardDetalhes extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _adicionarItemCarrinho(ItemCarrinho item) {
+    Inicio.itensCarrinho.add(item);
   }
 }

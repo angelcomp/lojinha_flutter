@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lojinha_alura/models/item_carrinho.dart';
 import 'package:lojinha_alura/paleta_cores.dart';
 import 'package:lojinha_alura/telas/carrinho.dart';
 import 'package:lojinha_alura/telas/detalhes.dart';
@@ -39,6 +40,9 @@ class MyApp extends StatelessWidget {
 }
 
 class Inicio extends StatelessWidget {
+
+  static List<ItemCarrinho> itensCarrinho = [];
+
   final List moveis = [
     {
       "titulo": "Mesa",
