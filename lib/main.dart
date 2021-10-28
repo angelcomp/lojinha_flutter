@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lojinha_alura/paleta_cores.dart';
 import 'package:lojinha_alura/telas/carrinho.dart';
@@ -18,6 +19,19 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: PaletaCores().lilas,
+        textTheme: const TextTheme(
+          headline1: TextStyle(
+              fontSize: 20,
+              fontFamily: 'Alata',
+              fontWeight: FontWeight.bold,
+              color: Colors.black),
+
+          headline2: TextStyle(
+              fontSize: 20,
+              fontFamily: 'Alata',
+              fontWeight: FontWeight.bold,
+              color: Colors.white),
+        ),
       ),
       home: Inicio(),
     );
