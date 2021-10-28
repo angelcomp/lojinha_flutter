@@ -11,7 +11,6 @@ class ListaCarrinho extends StatefulWidget {
 
   @override
   _ListaCarrinhoState createState() => _ListaCarrinhoState();
-
 }
 
 class _ListaCarrinhoState extends State<ListaCarrinho> {
@@ -34,9 +33,13 @@ class _ListaCarrinhoState extends State<ListaCarrinho> {
             clipBehavior: Clip.hardEdge,
             child: Row(
               children: [
-                Image(
-                  height: 90,
-                  image: AssetImage('utilidades/assets/imagens/${movel.foto}'),
+                Expanded(
+                  child: Image(
+                    fit: BoxFit.cover,
+                    height: 90,
+                    image:
+                        AssetImage('utilidades/assets/imagens/${movel.foto}'),
+                  ),
                 ),
                 Expanded(
                   child: Container(
@@ -46,11 +49,11 @@ class _ListaCarrinhoState extends State<ListaCarrinho> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(movel.titulo),
+                        Text(movel.titulo, style: Theme.of(context).textTheme.headline3,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('${movel.preco}'),
+                            Text('R\$ ${movel.preco}'),
                             Row(
                               children: [
                                 GestureDetector(
@@ -97,15 +100,16 @@ class _ListaCarrinhoState extends State<ListaCarrinho> {
       widget.atualiza();
     });
   }
+
   void _diminuirQuantidade(ItemCarrinho item) {
-    if(item.quantidade > 1) {
-    setState(() {
+    if (item.quantidade > 1) {
+      setState(() {
         item.quantidade--;
         widget.atualiza();
       });
     } else {
-        _removerItem(item);
-      }
+      _removerItem(item);
+    }
   }
 
   void _removerItem(ItemCarrinho item) {

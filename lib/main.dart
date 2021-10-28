@@ -32,6 +32,12 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Alata',
               fontWeight: FontWeight.bold,
               color: Colors.white),
+
+          headline3: TextStyle(
+              fontSize: 16,
+              fontFamily: 'Alata',
+              fontWeight: FontWeight.bold,
+              color: Colors.black),
         ),
       ),
       home: Inicio(),
