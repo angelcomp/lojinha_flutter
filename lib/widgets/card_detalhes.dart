@@ -7,8 +7,9 @@ import 'package:lojinha_alura/widgets/texto_detalhes.dart';
 
 class CardDetalhes extends StatelessWidget {
   final Movel movel;
+  final Function atualizaPagina;
 
-  CardDetalhes({required this.movel});
+  CardDetalhes({required this.movel, required this.atualizaPagina});
 
   @override
   Widget build(BuildContext context) {
@@ -47,5 +48,6 @@ class CardDetalhes extends StatelessWidget {
 
   _adicionarItemCarrinho(ItemCarrinho item) {
     Inicio.itensCarrinho.add(item);
+    atualizaPagina();
   }
 }
