@@ -15,7 +15,11 @@ class ListaCarrinho extends StatelessWidget {
         Movel movel = item.movel;
 
         return Container(
-          margin: EdgeInsets.only(left: 16, right: 16, top: 8,),
+          margin: EdgeInsets.only(
+            left: 16,
+            right: 16,
+            top: 8,
+          ),
           child: Card(
             clipBehavior: Clip.hardEdge,
             child: Row(
@@ -24,15 +28,48 @@ class ListaCarrinho extends StatelessWidget {
                   height: 90,
                   image: AssetImage('utilidades/assets/imagens/${movel.foto}'),
                 ),
-                Container(
-                  margin: EdgeInsets.only( left: 10 ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(movel.titulo),
-                      Text('${movel.preco}'),
-                      Text('${item.quantidade}')
-                    ],
+                Expanded(
+                  child: Container(
+                    height: 90,
+                    margin: EdgeInsets.only(left: 10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(movel.titulo),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('${movel.preco}'),
+                            Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () => _aumentarQuantidade(item),
+                                  child: Container(
+                                    margin: EdgeInsets.all(8),
+                                    child: const Icon(
+                                      Icons.add,
+                                      size: 14,
+                                    ),
+                                  ),
+                                ),
+                                Text('${item.quantidade}'),
+                                GestureDetector(
+                                  onTap: () => _diminuirQuantidade(item),
+                                  child: Container(
+                                    margin: EdgeInsets.all(8),
+                                    child: const Icon(
+                                      Icons.remove,
+                                      size: 14,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],
@@ -42,5 +79,12 @@ class ListaCarrinho extends StatelessWidget {
       },
       itemCount: carrinho.length,
     );
+  }
+
+  _aumentarQuantidade(ItemCarrinho item) {
+    item.quantidade++;
+  }
+  _diminuirQuantidade(ItemCarrinho item) {
+    item.quantidade--;
   }
 }
