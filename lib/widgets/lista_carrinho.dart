@@ -91,13 +91,13 @@ class _ListaCarrinhoState extends State<ListaCarrinho> {
     );
   }
 
-  _aumentarQuantidade(ItemCarrinho item) {
+  void _aumentarQuantidade(ItemCarrinho item) {
     setState(() {
       item.quantidade++;
       widget.atualiza();
     });
   }
-  _diminuirQuantidade(ItemCarrinho item) {
+  void _diminuirQuantidade(ItemCarrinho item) {
     if(item.quantidade > 1) {
     setState(() {
         item.quantidade--;
@@ -108,7 +108,7 @@ class _ListaCarrinhoState extends State<ListaCarrinho> {
       }
   }
 
-  _removerItem(ItemCarrinho item) {
+  void _removerItem(ItemCarrinho item) {
     setState(() {
       Inicio.itensCarrinho.remove(item);
     });

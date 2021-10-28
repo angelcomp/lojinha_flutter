@@ -17,20 +17,28 @@ class CardDetalhes extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextoDetalhes(texto: movel.titulo, estilo: Theme.of(context).textTheme.headline1,),
-          TextoDetalhes(texto: movel.descricao, estilo: null,),
+          TextoDetalhes(
+            texto: movel.titulo,
+            estilo: Theme.of(context).textTheme.headline1,
+          ),
+          TextoDetalhes(
+            texto: movel.descricao,
+            estilo: null,
+          ),
           Container(
-            margin: EdgeInsets.only(
-              left: 16, right: 16, top: 16, bottom: 8
-            ),
+            margin: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('R\$ ${movel.preco}', style: Theme.of(context).textTheme.headline1,),
+                Text(
+                  'R\$ ${movel.preco}',
+                  style: Theme.of(context).textTheme.headline1,
+                ),
                 ElevatedButton(
                   onPressed: () {
-                    _adicionarItemCarrinho(
-                      ItemCarrinho(movel: movel, quantidade: 1)
+                    _verificarListaCarrinho(
+                      Inicio.itensCarrinho,
+                      ItemCarrinho(movel: movel, quantidade: 1),
                     );
                   },
                   child: const Text(
@@ -46,8 +54,18 @@ class CardDetalhes extends StatelessWidget {
     );
   }
 
-  _adicionarItemCarrinho(ItemCarrinho item) {
+  void _adicionarItemCarrinho(ItemCarrinho item) {
     Inicio.itensCarrinho.add(item);
     atualizaPagina();
+  }
+
+  void _verificarListaCarrinho(List<ItemCarrinho> lista, ItemCarrinho item) {
+    int indiceMovel = lista.indexWhere((element) => item.movel == movel);
+
+    if (indiceMovel >= 0) {
+      lista[indiceMovel].quantidade = lista[indiceMovel].quantidade + 1;
+    } else {
+      _adicionarItemCarrinho(item);
+    }
   }
 }
